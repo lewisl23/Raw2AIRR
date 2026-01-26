@@ -27,5 +27,5 @@ jobs:
 
       - name: Test container igblast-1.21.0:latest runs
         run: |
-          docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest igblastn --help
+          docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest igblastn -help
           echo "Container works"
