@@ -18,7 +18,7 @@ jobs:
 
       - name: Test container presto-0.7.4:latest runs
         run: |
-          docker run --rm ghcr.io/lewisl23/presto-0.7.4:latest AssemblePairs.py --help
+          docker run --rm ghcr.io/lewisl23/presto-0.7.4:latest "AssemblePairs.py --help"
           echo "Container works"
         
       - name: Pull container igblast-1.21.0:latest from GHCR
@@ -27,5 +27,5 @@ jobs:
 
       - name: Test container igblast-1.21.0:latest runs
         run: |
-          docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest igblastn -help
+          docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest "igblastn -help"
           echo "Container works"
