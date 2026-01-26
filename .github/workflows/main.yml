@@ -12,19 +12,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with: 
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Pull container from GHCR
+      - name: Pull container presto-0.7.4:latest from GHCR
         run: |
           docker pull ghcr.io/lewisl23/presto-0.7.4:latest
 
-      - name: Test container runs
+      - name: Test container presto-0.7.4:latest runs
         run: |
           docker run --rm ghcr.io/lewisl23/presto-0.7.4:latest AssemblePairs.py --help
           echo "Container works"
         
+      - name: Pull container igblast-1.21.0:latest from GHCR
+        run: |
+          docker pull ghcr.io/lewisl23/igblast-1.21.0:latest
+
+      - name: Test container igblast-1.21.0:latest runs
+        run: |
+          docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest igblast --help
+          echo "Container works"
