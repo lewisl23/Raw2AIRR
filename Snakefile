@@ -52,7 +52,7 @@ rule filter:
 rule mask_primer:
     input:
         reads = "presto/presto_output/{sample}_quality-pass.fastq"
-        primer = "presto/Cowan_CPrimers.fasta"
+        primer = "presto/Primers.fasta"
     output:
         pass_file = "presto/presto_output/{sample}_primers-pass.fastq"
     container:
