@@ -7,7 +7,7 @@
 
 rule assemble:
     input:
-        read_1 = "{config[read_dir]}/{sample}_1.fastq"
+        read_1 = "{config[read_dir]}/{sample}_1.fastq",
         read_2 = "{config[read_dir]}/{sample}_2.fastq"
     output:
         pass_file = "presto/presto_output/{sample}_assemble-pass.fastq"
@@ -51,7 +51,7 @@ rule filter:
 
 rule mask_primer:
     input:
-        reads = "presto/presto_output/{sample}_quality-pass.fastq"
+        reads = "presto/presto_output/{sample}_quality-pass.fastq",
         primer = config["primer_file"]
     output:
         pass_file = "presto/presto_output/{sample}_primers-pass.fastq"
