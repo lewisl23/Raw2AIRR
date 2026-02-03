@@ -7,8 +7,8 @@
 
 rule assemble:
     input:
-        read_1 = "{config[read_dir]}/{sample}_1.fastq",
-        read_2 = "{config[read_dir]}/{sample}_2.fastq"
+        read_1 = lambda wildcards: f"{config['read_dir']}/{wildcards.sample}_1.fastq",
+        read_2 = lambda wildcards: f"{config['read_dir']}/{wildcards.sample}_2.fastq"
     output:
         pass_file = "presto/presto_output/{sample}_assemble-pass.fastq"
     container:
