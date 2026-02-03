@@ -47,6 +47,11 @@ jobs:
           pip install snakemake
           pip install pulp==2.7.0
 
+      - name: Install Singularity
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y singularity-container
+
       - name: Run test pipeline
         run: |
           snakemake --cores 1 \
