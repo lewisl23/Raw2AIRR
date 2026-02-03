@@ -29,3 +29,27 @@ jobs:
         run: |
           docker run --rm ghcr.io/lewisl23/igblast-1.21.0:latest igblastn -help
           echo "Container works"
+
+  test-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install Snakemake
+        run: |
+          pip install snakemake
+
+      - name: Run test pipeline
+        run: |
+          snakemake --cores 1 \
+            --configfile tests/config/test_config.yaml \
+            --use-singularity \
+            --printshellcmds \
+            --reason
