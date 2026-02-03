@@ -51,7 +51,7 @@ jobs:
         run: |
           snakemake --cores 1 \
             --configfile tests/config/test_config.yaml \
-            --use-singularity \
+            --use-docker \
             --printshellcmds \
             --reason \
             all
