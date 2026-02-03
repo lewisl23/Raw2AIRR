@@ -1,4 +1,4 @@
-name: Test GHCR Container
+name: CI/CD Pipeline
 
 on:
   push:
@@ -46,11 +46,6 @@ jobs:
         run: |
           pip install snakemake
           pip install pulp==2.7.0
-
-      - name: Install Apptainer
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y apptainer
 
       - name: Run test pipeline
         run: |
