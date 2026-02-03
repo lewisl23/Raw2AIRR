@@ -47,11 +47,16 @@ jobs:
           pip install snakemake
           pip install pulp==2.7.0
 
+        - name: Install Apptainer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apptainer
+
       - name: Run test pipeline
         run: |
           snakemake --cores 1 \
             --configfile tests/config/test_config.yaml \
-            --use-docker \
+            --use-singularity \
             --printshellcmds \
             --reason \
             all
