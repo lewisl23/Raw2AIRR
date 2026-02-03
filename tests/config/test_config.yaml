@@ -1,0 +1,6 @@
+# Config information for testing datasets
+samples: 
+- test
+
+read_dir: "tests/data"
+primer_file: "tests/data/Primers.fasta"

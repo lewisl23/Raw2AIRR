@@ -7,8 +7,8 @@
 
 rule assemble:
     input:
-        read_1 = "raw_reads/{sample}_1.fastq"
-        read_2 = "raw_reads/{sample}_2.fastq"
+        read_1 = "{config[read_dir]}/{sample}_1.fastq"
+        read_2 = "{config[read_dir]}/{sample}_2.fastq"
     output:
         pass_file = "presto/presto_output/{sample}_assemble-pass.fastq"
     container:
@@ -21,7 +21,7 @@ rule assemble:
         --outdir presto/presto_output --log presto/presto_output/{wildcards.sample}_AP.log
 
         # Print FAIL message if reads does not pass assembly
-        if [ ! -f {output.pass_file}]; then
+        if [ ! -f {output.pass_file} ]; then
             echo "Assembly failed for sample {wildcards.sample}" >&2
             exit 1
         fi
@@ -52,7 +52,7 @@ rule filter:
 rule mask_primer:
     input:
         reads = "presto/presto_output/{sample}_quality-pass.fastq"
-        primer = "presto/Primers.fasta"
+        primer = config["primer_file"]
     output:
         pass_file = "presto/presto_output/{sample}_primers-pass.fastq"
     container:

@@ -1,0 +1,7 @@
+# Config information for samples (Please list your sample name)
+samples: 
+- A0001
+- B1168
+
+read_dir: "raw_reads"
+primer_file: "raw_reads/Primers.fasta"
